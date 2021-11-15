@@ -11,10 +11,13 @@
 }
 
 .footer-top {
-  margin-top: 10px;
   text-align: center;
   border-bottom: 1px solid rgb(187, 187, 187);
   width: 100%;
+}
+
+.footer-top p {
+  margin: 0;
 }
 .footer-midlle {
   display: flex;
@@ -26,6 +29,7 @@
 }
 
 .footer-left-box p {
+  margin: 0;
   color: rgb(136, 136, 136);
 }
 .footer-right-box {
@@ -50,6 +54,7 @@
 }
 
 .footer-bottom {
+  font-size: 0.5rem;
   text-align: center;
 }
 

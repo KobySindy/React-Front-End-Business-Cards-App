@@ -12,8 +12,8 @@ const FooterPage = () => {
           <h3>Some content</h3>
           <p>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam,
-            reiciendis. Numquam consequatur quisquam, incidunt atque accusamus
-            sequi officiis voluptatum dolorum.
+            reiciendis. Numquam consequatur quisquam, officiis voluptatum
+            dolorum.
           </p>
         </div>
         <div className='footer-right-box'>
