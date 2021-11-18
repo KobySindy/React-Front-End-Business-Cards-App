@@ -13,7 +13,7 @@ const Footer = () => {
           <p>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam,
             reiciendis. Numquam consequatur quisquam, officiis voluptatum
-            dolorum.
+            officiis dolorum.
           </p>
         </div>
         <div className='footer-right-box'>
