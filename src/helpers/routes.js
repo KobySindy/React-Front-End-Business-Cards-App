@@ -1,14 +1,14 @@
+import { BiHome } from "react-icons/bi";
+import { FaUserPlus, FaUserTie, FaSignInAlt } from "react-icons/fa";
+import { FcAbout } from "react-icons/fc";
+import { TiBusinessCard } from "react-icons/ti";
 import HomePage from "../pages/HomePage";
 import AboutPage from "../pages/AboutPage";
 import SignInPage from "../pages/SignInPage";
-import UpsetCardPage from "../pages/UpsetCardPage";
+import AddEditCardPage from "../pages/AddEditCardPage";
 import BusinessRegistrationPage from "../pages/BusinessRegistrationPage";
 import SimpleRegistrationPage from "../pages/SimpleRegistrationPage";
 import MyCardsPage from "../pages/MyCardsPage";
-import { BiHome } from "react-icons/bi";
-import { FcAbout } from "react-icons/fc";
-import { FaUserPlus, FaUserTie, FaSignInAlt } from "react-icons/fa";
-import { TiBusinessCard } from "react-icons/ti";
 import BusinessCardsPage from "../pages/BusinessCardsPage";
 
 export const DISPLAY_STATES = {
@@ -70,8 +70,8 @@ export const routes = [
     icon: <FaSignInAlt></FaSignInAlt>,
   },
   {
-    href: "/upset-card",
-    page: UpsetCardPage,
+    href: "/add-edit-card",
+    page: AddEditCardPage,
     state: DISPLAY_STATES.HIDDEN,
   },
 ];

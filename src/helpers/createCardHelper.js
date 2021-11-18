@@ -1,5 +1,4 @@
 export default function validateCard(cardToValidate) {
-  debugger;
   let error = "";
   if (
     cardToValidate.bizName.length < 2 ||
@@ -28,6 +27,6 @@ export default function validateCard(cardToValidate) {
   } else {
     error += `Unvalid Phone Number *`;
   }
-  console.log(error || cardToValidate);
+
   return error || cardToValidate;
 }

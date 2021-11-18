@@ -20,8 +20,6 @@ function NavigationRouteComp({ setState, state }) {
 }
 
 function AppRoute({ route, state, setState }) {
-  console.log(state);
-
   if (route.state === DISPLAY_STATES.IS_BIZ) {
     if (!state.user._id) {
       return <Redirect to='/home' />;

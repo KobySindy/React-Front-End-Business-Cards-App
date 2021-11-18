@@ -9,17 +9,14 @@ function SimpleRegistrationPage() {
       <SimpleRegistrationComp
         clickHandler={registerUser}
         text='Sign up'
-        typeOfUser='Regular'></SimpleRegistrationComp>
+        typeOfUser='Regular'
+      />
     </Container>
   );
 
   function registerUser(data) {
     registerNewAccount(data, (response) => {
-      if (response._id) {
-        toast("Account Created Successfully");
-      } else {
-        toast(response.message);
-      }
+      toast(response._id ? "Account Created Successfully" : response.message);
     });
   }
 }

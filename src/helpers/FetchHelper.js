@@ -4,15 +4,6 @@ let baseUrl = "http://localhost:3000";
 
 let token = getAccessToken();
 
-function normalizeCardToServer(card) {
-  return {
-    bizName: card.bizName,
-    bizAddress: card.bizAddress,
-    bizDescription: card.bizDescription,
-    bizPhone: card.bizPhone,
-  };
-}
-
 export function registerNewAccount(data, callback) {
   let url = baseUrl + "/api/users";
   let obj = getConfigurationForPostRequest(data);
@@ -27,9 +18,7 @@ export function signInUser(data, callback) {
   let url = baseUrl + "/api/auth";
   let obj = getConfigurationForPostRequest(data);
   fetch(url, obj)
-    .then((response) => {
-      return response.json();
-    })
+    .then((response) => response.json())
     .then((json) => {
       if (json.token) {
         token = json.token;
@@ -37,23 +26,12 @@ export function signInUser(data, callback) {
       }
       callback(json);
     })
-    .catch((error) => {
-      callback(error);
-    });
+    .catch((error) => callback(error));
 }
 
 export function getMeData(callback) {
   if (!token) return;
   let url = baseUrl + "/api/users/me";
-  fetch(url, { headers: { "x-auth-token": token } })
-    .then((response) => response.json())
-    .then((json) => callback(json))
-    .catch((error) => callback(error));
-}
-
-export function getMeCards(callback) {
-  if (!token) return;
-  let url = baseUrl + "/api/users/mecards";
   fetch(url, { headers: { "x-auth-token": token } })
     .then((response) => response.json())
     .then((json) => callback(json))
@@ -68,6 +46,9 @@ export function getAllCards(callback) {
     .then((json) => callback(json))
     .catch((error) => callback(error));
 }
+
+//------Mannage Cards CRUD------//
+
 export function insertNewCard(data, callback) {
   if (!token) return;
   let url = baseUrl + "/api/cards";
@@ -96,15 +77,34 @@ export function updateThisCard(card, callback) {
   let obj = getConfigForPutRequest(normalizedCard, token);
 
   fetch(url, obj)
-    .then((response) => {
-      return response.json();
-    })
-    .then((json) => {
-      return callback(json);
-    })
-    .catch((error) => {
-      return callback(error);
-    });
+    .then((response) => response.json())
+    .then((json) => callback(json))
+    .catch((error) => callback(error));
+}
+
+//------Add Card To Favorites------//
+
+export function addCardToFavorites(cardId, callback) {
+  if (!token) return;
+  let url = baseUrl + "/api/users/favorite-cards/";
+
+  let obj = getConfigForPutRequest({ cardId }, token);
+
+  fetch(url, obj)
+    .then((response) => response.json())
+    .then((json) => callback(json))
+    .catch((error) => callback(error));
+}
+
+//-------Set Configuration Functions------//
+
+function normalizeCardToServer(card) {
+  return {
+    bizName: card.bizName,
+    bizAddress: card.bizAddress,
+    bizDescription: card.bizDescription,
+    bizPhone: card.bizPhone,
+  };
 }
 
 function getConfigurationForPostRequest(data) {

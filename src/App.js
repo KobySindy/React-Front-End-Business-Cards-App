@@ -1,11 +1,14 @@
 import { ToastContainer } from "react-toastify";
-import SinglePageAppComp from "./components/navigation/SinglePageAppComp";
 import { useState, useEffect } from "react";
+import SinglePageAppComp from "./components/navigation/SinglePageAppComp";
 import { getMeData } from "./helpers/FetchHelper";
 import { updateUser } from "./helpers/stateHelper";
 
 function App() {
-  const [state, setState] = useState({ user: {}, cardIdToEdit: "" });
+  const [state, setState] = useState({
+    user: {},
+    cardIdToEdit: "",
+  });
 
   useEffect(() => {
     getMeData((userData) => {
@@ -16,10 +19,8 @@ function App() {
   return (
     <div className='App'>
       <>
-        <SinglePageAppComp
-          setState={setState}
-          state={state}></SinglePageAppComp>
-        <ToastContainer></ToastContainer>
+        <SinglePageAppComp setState={setState} state={state} />
+        <ToastContainer />
       </>
     </div>
   );

@@ -1,6 +1,6 @@
-import validateSignIn from "../../helpers/signInHelper";
 import { Form, Button } from "react-bootstrap";
 import { toast } from "react-toastify";
+import validateSignIn from "../../helpers/signInHelper";
 
 function SignInComp({ clickHandler }) {
   return (
@@ -23,6 +23,7 @@ function SignInComp({ clickHandler }) {
             "formBasicEmail",
             "formBasicPassword"
           );
+
           if (typeof errorOrData == "string") {
             toast(errorOrData);
           } else {

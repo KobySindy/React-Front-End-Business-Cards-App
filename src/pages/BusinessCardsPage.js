@@ -1,12 +1,9 @@
-import { Container } from "react-bootstrap";
-import CardsComp from "../components/my-cards/CardsComp";
-import { getAllCards } from "../helpers/FetchHelper";
 import { useState, useEffect } from "react";
-// import { useHistory } from "react-router-dom";
+import { Container } from "react-bootstrap";
+import { BusinessCards } from "../components/cards/CardsComp";
+import { addCardToFavorites, getAllCards } from "../helpers/FetchHelper";
 
 function BusinessCardsPage({ state, setState }) {
-  const [isBizCardsPage, setIsBizCardsPage] = useState(true);
-  const user = state.user;
   const [allCards, setAllCards] = useState([]);
 
   useEffect(() => {
@@ -14,19 +11,17 @@ function BusinessCardsPage({ state, setState }) {
       setAllCards(cardsData);
     });
   }, []);
-  console.log(allCards);
-  // const history = useHistory();
+
+  const addToFavorites = (cardId) => {
+    addCardToFavorites(cardId, () => {
+      console.log("Card Added");
+    });
+  };
 
   return (
-    <>
-      <Container>
-        <CardsComp
-          user={user}
-          isBizCardsPage={isBizCardsPage}
-          setIsBizCardsPage={setIsBizCardsPage}
-          allCards={allCards}></CardsComp>
-      </Container>
-    </>
+    <Container>
+      <BusinessCards cards={allCards} addToFavorites={addToFavorites} />
+    </Container>
   );
 }
 export default BusinessCardsPage;

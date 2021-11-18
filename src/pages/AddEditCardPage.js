@@ -1,16 +1,16 @@
-import { insertNewCard, updateThisCard } from "../helpers/FetchHelper";
+import { useHistory } from "react-router-dom";
 import { Container, Button, Form } from "react-bootstrap";
 import { toast } from "react-toastify";
 import validateCard from "../helpers/createCardHelper";
 import { updateCards } from "../helpers/stateHelper";
-import { useHistory } from "react-router-dom";
+import { insertNewCard, updateThisCard } from "../helpers/FetchHelper";
 
 const EDIT_MODES = {
   ADD: 1,
   UPDATE: 2,
 };
 
-function UpsetCardPage({ setState, state }) {
+function AddEditCardPage({ setState, state }) {
   const history = useHistory();
 
   const card_Id_ToEdit = state.cardIdToEdit;
@@ -93,7 +93,7 @@ function UpsetCardPage({ setState, state }) {
           variant='primary'
           type='submit'
           onClick={(e) => {
-            console.log(updatedCard);
+            e.preventDefault();
             const errorOrData = validateCard(updatedCard);
             if (typeof errorOrData == "string") {
               toast(errorOrData);
@@ -132,4 +132,4 @@ function UpsetCardPage({ setState, state }) {
     history.push("my-cards");
   }
 }
-export default UpsetCardPage;
+export default AddEditCardPage;

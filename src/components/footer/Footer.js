@@ -1,8 +1,8 @@
 import React from "react";
 import "./footer.css";
 
-const FooterPage = () => {
-  const Footer = () => (
+const Footer = () => {
+  return (
     <footer className='footer'>
       <div className='footer-top'>
         <p>Here you can organize your footer content.</p>
@@ -47,7 +47,6 @@ const FooterPage = () => {
       </div>
     </footer>
   );
-  return <Footer></Footer>;
 };
 
-export default FooterPage;
+export default Footer;

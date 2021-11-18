@@ -1,8 +1,8 @@
+import { Container } from "react-bootstrap";
+import { BrowserRouter as Router } from "react-router-dom";
 import NavigationRouteComp from "./NavigationRouteComp";
 import NavigationBarComp from "./NavigationBarComp";
-import { BrowserRouter as Router } from "react-router-dom";
-import FooterPage from "../footer/Footer";
-import { Container } from "react-bootstrap";
+import Footer from "../footer/Footer";
 function SinglePageAppComp({ setState, state }) {
   return (
     <Container
@@ -14,14 +14,10 @@ function SinglePageAppComp({ setState, state }) {
         paddingRight: 0,
       }}>
       <Router>
-        <NavigationBarComp
-          setState={setState}
-          state={state}></NavigationBarComp>
-        <NavigationRouteComp
-          setState={setState}
-          state={state}></NavigationRouteComp>
+        <NavigationBarComp setState={setState} state={state} />
+        <NavigationRouteComp setState={setState} state={state} />
       </Router>
-      <FooterPage></FooterPage>
+      <Footer />
     </Container>
   );
 }

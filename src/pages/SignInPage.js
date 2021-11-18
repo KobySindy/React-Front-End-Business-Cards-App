@@ -1,9 +1,8 @@
-import { signInUser } from "../helpers/FetchHelper";
 import { Container } from "react-bootstrap";
-import SignInComp from "../components/sign-in/SignInComp";
 import { toast } from "react-toastify";
-import { getMeData } from "../helpers/FetchHelper";
 import { useHistory } from "react-router-dom";
+import { signInUser, getMeData } from "../helpers/FetchHelper";
+import SignInComp from "../components/sign-in/SignInComp";
 import { updateUser } from "../helpers/stateHelper";
 
 function SignInPage({ setState }) {
@@ -11,7 +10,7 @@ function SignInPage({ setState }) {
 
   return (
     <Container>
-      <SignInComp clickHandler={signIn}></SignInComp>
+      <SignInComp clickHandler={signIn} />
     </Container>
   );
 

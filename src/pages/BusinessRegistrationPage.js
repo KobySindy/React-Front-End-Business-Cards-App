@@ -1,16 +1,14 @@
+import { useState } from "react";
+import { Container } from "react-bootstrap";
+import { toast } from "react-toastify";
+import SimpleRegistrationComp from "../components/simple-registration/SimpleRegistrationComp";
+import AddEditCardPage from "./AddEditCardPage";
+import { updateUser } from "../helpers/stateHelper";
 import {
   getMeData,
   signInUser,
   registerNewAccount,
 } from "../helpers/FetchHelper";
-
-import { toast } from "react-toastify";
-import { Container } from "react-bootstrap";
-import SimpleRegistrationComp from "../components/simple-registration/SimpleRegistrationComp";
-// import CreateCardComp from "../components/my-cards/CreateCardComp";
-import UpsetCardPage from "./UpsetCardPage";
-import { useState } from "react";
-import { updateUser } from "../helpers/stateHelper";
 
 function BusinessRegistrationPage({ state, setState }) {
   const [isStep1, setIsStep1] = useState(true);
@@ -21,10 +19,11 @@ function BusinessRegistrationPage({ state, setState }) {
         <SimpleRegistrationComp
           clickHandler={registerUser}
           text='Next'
-          typeOfUser='Business'></SimpleRegistrationComp>
+          typeOfUser='Business'
+        />
       )}
 
-      {!isStep1 && <UpsetCardPage state={state} setState={setState} />}
+      {!isStep1 && <AddEditCardPage state={state} setState={setState} />}
     </Container>
   );
 
@@ -39,16 +38,11 @@ function BusinessRegistrationPage({ state, setState }) {
               updateUser(setState, data);
               toast("Welcome " + data.name);
             });
-          } else {
-            toast(response.message);
-          }
+          } else toast(response.message);
         });
-
         toast("Account Created Successfully");
         setIsStep1(false);
-      } else {
-        toast(data.message);
-      }
+      } else toast(data.message);
     });
   }
 }

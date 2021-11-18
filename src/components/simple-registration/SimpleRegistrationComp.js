@@ -1,7 +1,9 @@
 import { Form, Button } from "react-bootstrap";
-import validateSimpleRegistration from "../../helpers/simpleRegistrationHelper";
 import { toast } from "react-toastify";
+import validateSimpleRegistration from "../../helpers/simpleRegistrationHelper";
+
 import "./simple-reg-comp.css";
+
 const notify = (message) => toast(message);
 
 function SimpleRegistrationComp({ text, clickHandler, typeOfUser }) {
