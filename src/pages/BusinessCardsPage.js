@@ -12,15 +12,21 @@ function BusinessCardsPage({ state, setState }) {
     });
   }, []);
 
-  const addToFavorites = (cardId) => {
-    addCardToFavorites(cardId, () => {
-      console.log("Card Added");
-    });
+  const addToFavorites = (cardId, state) => {
+    let user = state.user;
+    let oldFavoriteCardsArr = user.favoriteCards;
+    if (oldFavoriteCardsArr.includes(cardId))
+      return console.log(`Card Already Favorite`);
+    // addCardToFavorites(cardId, (user) => {});
   };
 
   return (
     <Container>
-      <BusinessCards cards={allCards} addToFavorites={addToFavorites} />
+      <BusinessCards
+        state={state}
+        cards={allCards}
+        addToFavorites={addToFavorites}
+      />
     </Container>
   );
 }

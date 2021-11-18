@@ -1,8 +1,8 @@
 import { Container } from "react-bootstrap";
 import CardComp from "./CardComp";
 
-export function BusinessCards({ cards, addToFavorites }) {
-  return <Cards addToFavorites={addToFavorites} cards={cards} />;
+export function BusinessCards({ state, cards, addToFavorites }) {
+  return <Cards state={state} addToFavorites={addToFavorites} cards={cards} />;
 }
 
 export function MyCards({ cards, editCard, removeCard }) {
@@ -11,6 +11,7 @@ export function MyCards({ cards, editCard, removeCard }) {
 
 function Cards({
   cards = [],
+  state = {},
   addToFavorites = null,
   editCard = null,
   removeCard = null,
@@ -20,6 +21,7 @@ function Cards({
       {cards.map((card, index) => (
         <CardComp
           key={card._id}
+          state={state}
           card={card}
           addToFavorites={addToFavorites}
           editCard={editCard}

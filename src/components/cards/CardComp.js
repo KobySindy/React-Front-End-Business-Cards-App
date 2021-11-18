@@ -1,7 +1,7 @@
 import { Card, Button } from "react-bootstrap";
 import { AiOutlineEdit, AiOutlineDelete } from "react-icons/ai";
 
-function CardComp({ card, removeCard, editCard, addToFavorites }) {
+function CardComp({ state, card, removeCard, editCard, addToFavorites }) {
   const { bizName, bizDescription, bizAddress, bizPhone, bizImage } = card;
 
   return (
@@ -19,9 +19,10 @@ function CardComp({ card, removeCard, editCard, addToFavorites }) {
         <Card.Text>{bizAddress}</Card.Text>
         <Card.Text>{bizPhone}</Card.Text>
         <ButtonsControl
+          card={card}
+          state={state}
           removeCard={removeCard}
           editCard={editCard}
-          card={card}
           addToFavorites={addToFavorites}
         />
       </Card>
@@ -29,7 +30,7 @@ function CardComp({ card, removeCard, editCard, addToFavorites }) {
   );
 }
 
-function ButtonsControl({ addToFavorites, removeCard, editCard, card }) {
+function ButtonsControl({ state, addToFavorites, removeCard, editCard, card }) {
   const editButtonStyle = { display: editCard ? "inherit" : "none" };
   const deleteButtonStyle = { display: removeCard ? "inherit" : "none" };
   const addToFavoritesButtonStyle = {
@@ -58,7 +59,7 @@ function ButtonsControl({ addToFavorites, removeCard, editCard, card }) {
       <Button
         style={addToFavoritesButtonStyle}
         onClick={() => {
-          addToFavorites(card._id);
+          addToFavorites(card._id, state);
         }}>
         Add To Favorite
       </Button>
