@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
+import { toast } from "react-toastify";
 import { BusinessCards } from "../components/cards/CardsComp";
 import { addCardToFavorites, getAllCards } from "../helpers/FetchHelper";
+import { updateFavoriteCards } from "../helpers/stateHelper";
 
 function BusinessCardsPage({ state, setState }) {
   const [allCards, setAllCards] = useState([]);
@@ -9,15 +11,15 @@ function BusinessCardsPage({ state, setState }) {
   useEffect(() => {
     getAllCards((cardsData) => {
       setAllCards(cardsData);
+      console.log(state.user);
     });
   }, []);
 
-  const addToFavorites = (cardId, state) => {
-    let user = state.user;
-    let oldFavoriteCardsArr = user.favoriteCards;
-    if (oldFavoriteCardsArr.includes(cardId))
-      return console.log(`Card Already Favorite`);
-    // addCardToFavorites(cardId, (user) => {});
+  const addToFavorites = (cardBizNumber, state) => {
+    addCardToFavorites(cardBizNumber, (res) => {
+      updateFavoriteCards(setState, res.favoriteCards);
+      toast("Cards Added Successfuly!");
+    });
   };
 
   return (

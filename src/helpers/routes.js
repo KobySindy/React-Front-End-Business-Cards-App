@@ -10,6 +10,7 @@ import BusinessRegistrationPage from "../pages/BusinessRegistrationPage";
 import SimpleRegistrationPage from "../pages/SimpleRegistrationPage";
 import MyCardsPage from "../pages/MyCardsPage";
 import BusinessCardsPage from "../pages/BusinessCardsPage";
+import FavoriteCardsPage from "../pages/FavoriteCardsPage";
 
 export const DISPLAY_STATES = {
   GENERAL: 1,
@@ -54,6 +55,13 @@ export const routes = [
     page: BusinessCardsPage,
     state: DISPLAY_STATES.PRIVATE,
     icon: <FaUserTie></FaUserTie>,
+  },
+  {
+    name: "Favorites",
+    href: "/favorite-cards",
+    page: FavoriteCardsPage,
+    state: DISPLAY_STATES.PRIVATE,
+    icon: "",
   },
   {
     name: "My Cards",

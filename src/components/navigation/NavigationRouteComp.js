@@ -2,8 +2,12 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import { routes, DISPLAY_STATES } from "../../helpers/routes";
 
 function NavigationRouteComp({ setState, state }) {
+  console.log(state);
   return (
     <Switch>
+      <Route exact path='/'>
+        <Redirect to='/home' />
+      </Route>
       {routes.map((route, index) => {
         return (
           <Route

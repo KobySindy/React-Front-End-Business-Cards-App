@@ -29,6 +29,7 @@ export function signInUser(data, callback) {
     .catch((error) => callback(error));
 }
 
+//Get the User Data
 export function getMeData(callback) {
   if (!token) return;
   let url = baseUrl + "/api/users/me";
@@ -38,9 +39,19 @@ export function getMeData(callback) {
     .catch((error) => callback(error));
 }
 
+//Get All existing Cards
 export function getAllCards(callback) {
   if (!token) return;
   let url = baseUrl + "/api/cards";
+  fetch(url, { headers: { "x-auth-token": token } })
+    .then((response) => response.json())
+    .then((json) => callback(json))
+    .catch((error) => callback(error));
+}
+export function getFavoriteCards(data, callback) {
+  if (!token) return;
+  let url = baseUrl + `/api/users/favorite-cards?bizNum=${data}`;
+
   fetch(url, { headers: { "x-auth-token": token } })
     .then((response) => response.json())
     .then((json) => callback(json))
@@ -84,12 +95,11 @@ export function updateThisCard(card, callback) {
 
 //------Add Card To Favorites------//
 
-export function addCardToFavorites(cardId, callback) {
+export function addCardToFavorites(cardBizNumber, callback) {
   if (!token) return;
   let url = baseUrl + "/api/users/favorite-cards/";
 
-  let obj = getConfigForPutRequest({ cardId }, token);
-
+  let obj = getConfigForPutRequest({ cardBizNumber }, token);
   fetch(url, obj)
     .then((response) => response.json())
     .then((json) => callback(json))

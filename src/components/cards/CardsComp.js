@@ -8,6 +8,9 @@ export function BusinessCards({ state, cards, addToFavorites }) {
 export function MyCards({ cards, editCard, removeCard }) {
   return <Cards cards={cards} editCard={editCard} removeCard={removeCard} />;
 }
+export function FavoriteCards({ cards, removeCard }) {
+  return <Cards cards={cards} removeCard={removeCard} />;
+}
 
 function Cards({
   cards = [],

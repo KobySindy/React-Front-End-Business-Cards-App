@@ -59,7 +59,7 @@ function ButtonsControl({ state, addToFavorites, removeCard, editCard, card }) {
       <Button
         style={addToFavoritesButtonStyle}
         onClick={() => {
-          addToFavorites(card._id, state);
+          addToFavorites(card.bizNumber, state);
         }}>
         Add To Favorite
       </Button>
