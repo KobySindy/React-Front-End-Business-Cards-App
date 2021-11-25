@@ -1,7 +1,7 @@
 import { BiHome } from "react-icons/bi";
 import { FaUserPlus, FaUserTie, FaSignInAlt } from "react-icons/fa";
 import { FcAbout } from "react-icons/fc";
-import { TiBusinessCard } from "react-icons/ti";
+import { TiBusinessCard, TiStarFullOutline } from "react-icons/ti";
 import HomePage from "../pages/HomePage";
 import AboutPage from "../pages/AboutPage";
 import SignInPage from "../pages/SignInPage";
@@ -61,7 +61,7 @@ export const routes = [
     href: "/favorite-cards",
     page: FavoriteCardsPage,
     state: DISPLAY_STATES.PRIVATE,
-    icon: "",
+    icon: <TiStarFullOutline />,
   },
   {
     name: "My Cards",

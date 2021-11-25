@@ -22,13 +22,23 @@ function FavoriteCardsPage({ state, setState }) {
 
   console.log(favoriteCardsBizNumbers);
   console.log(userFavoriteCards);
+
   return (
     <Container>
-      <FavoriteCards
+      {favoriteCardsBizNumbers.length === 0 ? (
+        <></>
+      ) : (
+        <FavoriteCards
+          cards={userFavoriteCards}
+          state={state}
+          removeCard={removeFavoriteCard}
+        />
+      )}
+      {/* <FavoriteCards
         cards={userFavoriteCards}
         state={state}
         removeCard={removeFavoriteCard}
-      />
+      /> */}
     </Container>
   );
 }

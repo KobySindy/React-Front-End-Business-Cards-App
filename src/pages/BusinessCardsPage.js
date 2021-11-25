@@ -17,8 +17,13 @@ function BusinessCardsPage({ state, setState }) {
 
   const addToFavorites = (cardBizNumber, state) => {
     addCardToFavorites(cardBizNumber, (res) => {
-      updateFavoriteCards(setState, res.favoriteCards);
-      toast("Cards Added Successfuly!");
+      debugger;
+      if (res.message) {
+        toast(res.message);
+      } else {
+        updateFavoriteCards(setState, res.favoriteCards);
+        toast("Card Added To Favorites Successfuly!");
+      }
     });
   };
 
