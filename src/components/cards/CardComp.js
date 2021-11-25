@@ -1,7 +1,14 @@
 import { Card, Button } from "react-bootstrap";
 import { AiOutlineEdit, AiOutlineDelete } from "react-icons/ai";
 
-function CardComp({ state, card, removeCard, editCard, addToFavorites }) {
+function CardComp({
+  state,
+  card,
+  removeCard,
+  editCard,
+  addToFavorites,
+  isFavorites,
+}) {
   const { bizName, bizDescription, bizAddress, bizPhone, bizImage } = card;
 
   return (
@@ -24,13 +31,21 @@ function CardComp({ state, card, removeCard, editCard, addToFavorites }) {
           removeCard={removeCard}
           editCard={editCard}
           addToFavorites={addToFavorites}
+          isFavorites={isFavorites}
         />
       </Card>
     </>
   );
 }
 
-function ButtonsControl({ state, addToFavorites, removeCard, editCard, card }) {
+function ButtonsControl({
+  state,
+  addToFavorites,
+  isFavorites,
+  removeCard,
+  editCard,
+  card,
+}) {
   const editButtonStyle = { display: editCard ? "inherit" : "none" };
   const deleteButtonStyle = { display: removeCard ? "inherit" : "none" };
   const addToFavoritesButtonStyle = {
@@ -52,7 +67,7 @@ function ButtonsControl({ state, addToFavorites, removeCard, editCard, card }) {
         variant='danger'
         style={deleteButtonStyle}
         onClick={() => {
-          removeCard(card._id);
+          isFavorites ? removeCard(card.bizNumber) : removeCard(card._id);
         }}>
         <AiOutlineDelete />
       </Button>

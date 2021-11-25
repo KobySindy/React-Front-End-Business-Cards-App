@@ -9,7 +9,7 @@ export function MyCards({ cards, editCard, removeCard }) {
   return <Cards cards={cards} editCard={editCard} removeCard={removeCard} />;
 }
 export function FavoriteCards({ cards, removeCard }) {
-  return <Cards cards={cards} removeCard={removeCard} />;
+  return <Cards cards={cards} isFavorites={true} removeCard={removeCard} />;
 }
 
 function Cards({
@@ -18,6 +18,7 @@ function Cards({
   addToFavorites = null,
   editCard = null,
   removeCard = null,
+  isFavorites = false,
 }) {
   return (
     <Container>
@@ -26,6 +27,7 @@ function Cards({
           key={card._id}
           state={state}
           card={card}
+          isFavorites={isFavorites}
           addToFavorites={addToFavorites}
           editCard={editCard}
           removeCard={removeCard}></CardComp>
@@ -33,35 +35,3 @@ function Cards({
     </Container>
   );
 }
-
-// function CardsComp({
-//   cards,
-//   editCard,
-//   removeCard,
-//   allCards,
-//   isBizCardsPage,
-//   addToFavorites,
-// }) {
-//   return (
-//     <Container>
-//       {isBizCardsPage
-//         ? allCards.map((card, index) => (
-//             <CardComp
-//               key={card._id}
-//               card={card}
-//               isBizCardsPage={isBizCardsPage}
-//               addToFavorites={addToFavorites}></CardComp>
-//           ))
-//         : cards.map((card, index) => (
-//             <CardComp
-//               key={card._id}
-//               card={card}
-//               deleteHandler={removeCard}
-//               editHandler={editCard}
-//               isBizCardsPage={isBizCardsPage}></CardComp>
-//           ))}
-//     </Container>
-//   );
-// }
-
-// export default CardsComp;

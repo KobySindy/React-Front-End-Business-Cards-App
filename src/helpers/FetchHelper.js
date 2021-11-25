@@ -4,6 +4,7 @@ let baseUrl = "http://localhost:3000";
 
 let token = getAccessToken();
 
+//Register New User
 export function registerNewAccount(data, callback) {
   let url = baseUrl + "/api/users";
   let obj = getConfigurationForPostRequest(data);
@@ -14,6 +15,7 @@ export function registerNewAccount(data, callback) {
     .catch((error) => callback(error));
 }
 
+//Sign In And Set Access Token at LocaStorage
 export function signInUser(data, callback) {
   let url = baseUrl + "/api/auth";
   let obj = getConfigurationForPostRequest(data);
@@ -33,6 +35,7 @@ export function signInUser(data, callback) {
 export function getMeData(callback) {
   if (!token) return;
   let url = baseUrl + "/api/users/me";
+
   fetch(url, { headers: { "x-auth-token": token } })
     .then((response) => response.json())
     .then((json) => callback(json))
@@ -43,11 +46,14 @@ export function getMeData(callback) {
 export function getAllCards(callback) {
   if (!token) return;
   let url = baseUrl + "/api/cards";
+
   fetch(url, { headers: { "x-auth-token": token } })
     .then((response) => response.json())
     .then((json) => callback(json))
     .catch((error) => callback(error));
 }
+
+//Convert BizNimbers to Cards
 export function getFavoriteCards(data, callback) {
   if (!token) return;
   let url = baseUrl + `/api/users/favorite-cards?bizNum=${data}`;
@@ -58,8 +64,7 @@ export function getFavoriteCards(data, callback) {
     .catch((error) => callback(error));
 }
 
-//------Mannage Cards CRUD------//
-
+//Post a New Card
 export function insertNewCard(data, callback) {
   if (!token) return;
   let url = baseUrl + "/api/cards";
@@ -72,15 +77,18 @@ export function insertNewCard(data, callback) {
     .catch((error) => callback(error));
 }
 
+//Delete Card
 export function deleteCard(idToDelete, callback) {
   if (!token) return;
   let url = baseUrl + "/api/cards/" + idToDelete;
+
   fetch(url, { method: "DELETE", headers: { "x-auth-token": token } })
     .then((response) => response.json())
     .then((json) => callback(json))
     .catch((error) => callback(error));
 }
 
+//Update Card
 export function updateThisCard(card, callback) {
   if (!token) return;
   let url = baseUrl + "/api/cards/" + card._id;
@@ -93,8 +101,7 @@ export function updateThisCard(card, callback) {
     .catch((error) => callback(error));
 }
 
-//------Add Card To Favorites------//
-
+//Add Card To Favorites
 export function addCardToFavorites(cardBizNumber, callback) {
   if (!token) return;
   let url = baseUrl + "/api/users/favorite-cards/";
@@ -106,7 +113,18 @@ export function addCardToFavorites(cardBizNumber, callback) {
     .catch((error) => callback(error));
 }
 
-//-------Set Configuration Functions------//
+//Remove Card From Favorites
+export function deleteFromFavorites(cardBizNumber, callback) {
+  if (!token) return;
+  let url = baseUrl + "/api/users/favorite-cards-delete/";
+  let obj = getConfigForPutRequest({ cardBizNumber }, token);
+  fetch(url, obj)
+    .then((response) => response.json())
+    .then((json) => callback(json))
+    .catch((error) => callback(error));
+}
+
+//-------Configuration Functions------//
 
 function normalizeCardToServer(card) {
   return {
