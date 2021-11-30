@@ -53,7 +53,7 @@ export function getAllCards(callback) {
     .catch((error) => callback(error));
 }
 
-//Convert BizNimbers to Cards
+//Convert BizNumbers to Cards
 export function getFavoriteCards(data, callback) {
   if (!token) return;
   let url = baseUrl + `/api/users/favorite-cards?bizNum=${data}`;
@@ -68,7 +68,8 @@ export function getFavoriteCards(data, callback) {
 export function insertNewCard(data, callback) {
   if (!token) return;
   let url = baseUrl + "/api/cards";
-  let obj = getConfigurationForPostRequest(data);
+  const normalizedCard = normalizeCardToServer(data);
+  let obj = getConfigurationForPostRequest(normalizedCard);
   obj.headers["x-auth-token"] = token;
 
   fetch(url, obj)
@@ -126,11 +127,15 @@ export function deleteFromFavorites(cardBizNumber, callback) {
 
 //-------Configuration Functions------//
 
+export const forFirstCharUppercase = (string) => {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
 function normalizeCardToServer(card) {
   return {
-    bizName: card.bizName,
-    bizAddress: card.bizAddress,
-    bizDescription: card.bizDescription,
+    bizName: forFirstCharUppercase(card.bizName),
+    bizAddress: forFirstCharUppercase(card.bizAddress),
+    bizDescription: forFirstCharUppercase(card.bizDescription),
     bizPhone: card.bizPhone,
   };
 }

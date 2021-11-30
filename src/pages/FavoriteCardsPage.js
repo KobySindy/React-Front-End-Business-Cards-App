@@ -34,11 +34,6 @@ function FavoriteCardsPage({ state, setState }) {
           removeCard={removeFavoriteCard}
         />
       )}
-      {/* <FavoriteCards
-        cards={userFavoriteCards}
-        state={state}
-        removeCard={removeFavoriteCard}
-      /> */}
     </Container>
   );
 }

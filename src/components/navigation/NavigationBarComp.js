@@ -15,25 +15,29 @@ function NavigationBarComp({ setState, state }) {
         <Navbar.Collapse id='responsive-navbar-nav'>
           <Nav className='me-auto'>
             <NavItems state={state} />
-            <SignOut history={history} setState={setState} />
           </Nav>
+          <SignOut state={state} history={history} setState={setState} />
         </Navbar.Collapse>
       </Container>
     </Navbar>
   );
 }
-function SignOut({ setState, history }) {
+function SignOut({ state, setState, history }) {
+  let userName = state.user.name;
   const token = getAccessToken();
   if (token) {
     return (
-      <Button
-        onClick={() => {
-          clearAccessToken();
-          setState({ user: {}, cardIdToEdit: "" });
-          history.push({ pathname: "/home" });
-        }}>
-        Signout
-      </Button>
+      <>
+        <span style={{ color: "white", margin: "0.5rem" }}>{userName}</span>
+        <Button
+          onClick={() => {
+            clearAccessToken();
+            setState({ user: {}, cardIdToEdit: "" });
+            history.push({ pathname: "/home" });
+          }}>
+          Signout
+        </Button>
+      </>
     );
   }
   return null;

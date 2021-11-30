@@ -1,12 +1,17 @@
 import { useState, useEffect } from "react";
-import { Container } from "react-bootstrap";
+import { Container, Form } from "react-bootstrap";
 import { toast } from "react-toastify";
 import { BusinessCards } from "../components/cards/CardsComp";
-import { addCardToFavorites, getAllCards } from "../helpers/FetchHelper";
+import {
+  addCardToFavorites,
+  getAllCards,
+  forFirstCharUppercase,
+} from "../helpers/FetchHelper";
 import { updateFavoriteCards } from "../helpers/stateHelper";
 
 function BusinessCardsPage({ state, setState }) {
   const [allCards, setAllCards] = useState([]);
+  const [filter, setFilter] = useState("");
 
   useEffect(() => {
     getAllCards((cardsData) => {
@@ -15,6 +20,24 @@ function BusinessCardsPage({ state, setState }) {
     });
   }, []);
 
+  //Setting Cards to Render for BusinessCards
+  function getFilterd(filter, allTheCards) {
+    let filterdArr = allTheCards
+      .map((card) => {
+        if (
+          card.bizName.includes(forFirstCharUppercase(filter)) ||
+          card.bizDescription.includes(forFirstCharUppercase(filter))
+        ) {
+          return card;
+        } else return null;
+      })
+      .filter(Boolean);
+
+    return filterdArr;
+  }
+  let filterdArr = getFilterd(filter, allCards);
+
+  //Add To Favorites
   const addToFavorites = (cardBizNumber, state) => {
     addCardToFavorites(cardBizNumber, (res) => {
       debugger;
@@ -29,12 +52,29 @@ function BusinessCardsPage({ state, setState }) {
 
   return (
     <Container>
+      <SearchBar setFilter={setFilter} />
       <BusinessCards
         state={state}
-        cards={allCards}
+        cards={filterdArr}
         addToFavorites={addToFavorites}
       />
     </Container>
+  );
+}
+
+function SearchBar({ setFilter }) {
+  function handleChange(text) {
+    setFilter(text);
+  }
+  return (
+    <Form>
+      <Form.Group>
+        <Form.Control
+          as='input'
+          onChange={(e) => handleChange(e.target.value)}
+        />
+      </Form.Group>
+    </Form>
   );
 }
 export default BusinessCardsPage;
