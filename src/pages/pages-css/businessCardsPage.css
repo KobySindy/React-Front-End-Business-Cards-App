@@ -1,0 +1,14 @@
+.searchBarBox {
+  padding: 1.5rem;
+  box-shadow: 0 0.4rem 1.4rem rgb(0 0 0 / 30%);
+  background-color: #32373d;
+  color: white;
+}
+
+.cardsContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}

@@ -9,7 +9,12 @@ import {
 function NavigationBarComp({ setState, state }) {
   const history = useHistory();
   return (
-    <Navbar collapseOnSelect expand='lg' bg='dark' variant='dark'>
+    <Navbar
+      style={{ width: "100%", zIndex: 100, position: "fixed", top: 0, left: 0 }}
+      collapseOnSelect
+      expand='lg'
+      bg='dark'
+      variant='dark'>
       <Container>
         <Navbar.Toggle aria-controls='responsive-navbar-nav' />
         <Navbar.Collapse id='responsive-navbar-nav'>

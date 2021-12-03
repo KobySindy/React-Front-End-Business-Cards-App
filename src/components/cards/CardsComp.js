@@ -21,7 +21,7 @@ function Cards({
   isFavorites = false,
 }) {
   return (
-    <Container>
+    <>
       {cards.map((card, index) => (
         <CardComp
           key={card._id}
@@ -32,6 +32,6 @@ function Cards({
           editCard={editCard}
           removeCard={removeCard}></CardComp>
       ))}
-    </Container>
+    </>
   );
 }

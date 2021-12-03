@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { deleteCard } from "../helpers/FetchHelper";
 import { MyCards } from "../components/cards/CardsComp";
 import { updateCards, updateCardIdToEdit } from "../helpers/stateHelper";
-
+import "./pages-css/myCards.css";
 function MyCardsPage({ state, setState }) {
   const history = useHistory();
   const user = state.user;
@@ -34,14 +34,16 @@ function MyCardsPage({ state, setState }) {
   };
 
   return (
-    <>
-      <Button className='btn btn-success' onClick={addCard}>
-        Create New Card
-      </Button>
-      <Container>
-        <MyCards cards={cards} removeCard={removeCard} editCard={editCard} />
-      </Container>
-    </>
+    <Container>
+      <div className='myCardsflexBox'>
+        <Button className='createCardBtn btn-success' onClick={addCard}>
+          Create New Card
+        </Button>
+        <div className='cardsBox'>
+          <MyCards cards={cards} removeCard={removeCard} editCard={editCard} />
+        </div>
+      </div>
+    </Container>
   );
 }
 export default MyCardsPage;
