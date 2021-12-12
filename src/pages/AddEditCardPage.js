@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import validateCard from "../helpers/createCardHelper";
 import { updateCards } from "../helpers/stateHelper";
 import { insertNewCard, updateThisCard } from "../helpers/FetchHelper";
+import "./pages-css/mainPagesStyle.css";
 
 const EDIT_MODES = {
   ADD: 1,
@@ -42,7 +43,7 @@ function AddEditCardPage({ setState, state }) {
   }
 
   return (
-    <Container>
+    <Container className='page-wrap'>
       <Form>
         <h2>{title}</h2>
         <Form.Group className='mb-3' controlId='formBasicBusinessName'>

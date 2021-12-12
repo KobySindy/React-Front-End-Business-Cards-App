@@ -1,9 +1,9 @@
 import { Container } from "react-bootstrap";
-
+import "./pages-css/mainPagesStyle.css";
 function AboutPage() {
   return (
     <>
-      <Container>
+      <Container className='page-wrap'>
         <h1>About Us </h1>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam ab

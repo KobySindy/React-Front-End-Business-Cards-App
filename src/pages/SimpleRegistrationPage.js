@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 
 function SimpleRegistrationPage() {
   return (
-    <Container>
+    <Container className='page-wrap'>
       <SimpleRegistrationComp
         clickHandler={registerUser}
         text='Sign up'

@@ -3,7 +3,8 @@ import { Container } from "react-bootstrap";
 import { FavoriteCards } from "../components/cards/CardsComp";
 import { getFavoriteCards, deleteFromFavorites } from "../helpers/FetchHelper";
 import { updateFavoriteCards } from "../helpers/stateHelper";
-import "./pages-css/favoriteCardsPage.css";
+// import "./pages-css/favoriteCardsPage.css";
+import "./pages-css/mainPagesStyle.css";
 
 function FavoriteCardsPage({ state, setState }) {
   const [userFavoriteCards, setuserFavoriteCards] = useState([]);
@@ -25,11 +26,12 @@ function FavoriteCardsPage({ state, setState }) {
   console.log(userFavoriteCards);
 
   return (
-    <Container className='favoriteCardsContainer'>
+    <Container className='page-wrap'>
       {favoriteCardsBizNumbers.length === 0 ? (
         <></>
       ) : (
         <FavoriteCards
+          className='cards-wrap'
           cards={userFavoriteCards}
           state={state}
           removeCard={removeFavoriteCard}

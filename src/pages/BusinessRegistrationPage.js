@@ -14,7 +14,7 @@ function BusinessRegistrationPage({ state, setState }) {
   const [isStep1, setIsStep1] = useState(true);
 
   return (
-    <Container>
+    <Container className='page-wrap'>
       {isStep1 && (
         <SimpleRegistrationComp
           clickHandler={registerUser}
@@ -29,7 +29,6 @@ function BusinessRegistrationPage({ state, setState }) {
 
   function registerUser(data) {
     const bizUserData = { ...data, biz: true };
-
     registerNewAccount(bizUserData, ({ _id, name, ...data }) => {
       if (_id) {
         signInUser(data, (response) => {

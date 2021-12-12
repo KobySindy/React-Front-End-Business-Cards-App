@@ -22,16 +22,18 @@ function Cards({
 }) {
   return (
     <>
-      {cards.map((card, index) => (
-        <CardComp
-          key={card._id}
-          state={state}
-          card={card}
-          isFavorites={isFavorites}
-          addToFavorites={addToFavorites}
-          editCard={editCard}
-          removeCard={removeCard}></CardComp>
-      ))}
+      <div className='cards-wrap'>
+        {cards.map((card, index) => (
+          <CardComp
+            key={card._id}
+            state={state}
+            card={card}
+            isFavorites={isFavorites}
+            addToFavorites={addToFavorites}
+            editCard={editCard}
+            removeCard={removeCard}></CardComp>
+        ))}
+      </div>
     </>
   );
 }

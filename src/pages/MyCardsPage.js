@@ -3,7 +3,9 @@ import { useHistory } from "react-router-dom";
 import { deleteCard } from "../helpers/FetchHelper";
 import { MyCards } from "../components/cards/CardsComp";
 import { updateCards, updateCardIdToEdit } from "../helpers/stateHelper";
-import "./pages-css/myCards.css";
+import "./pages-css/myCardsPage.css";
+import "./pages-css/mainPagesStyle.css";
+
 function MyCardsPage({ state, setState }) {
   const history = useHistory();
   const user = state.user;
@@ -34,16 +36,15 @@ function MyCardsPage({ state, setState }) {
   };
 
   return (
-    <Container>
-      <div className='myCardsflexBox'>
+    <div className='bgImage'>
+      <Container className='page-wrap'>
         <Button className='createCardBtn btn-success' onClick={addCard}>
           Create New Card
         </Button>
-        <div className='cardsBox'>
-          <MyCards cards={cards} removeCard={removeCard} editCard={editCard} />
-        </div>
-      </div>
-    </Container>
+
+        <MyCards cards={cards} removeCard={removeCard} editCard={editCard} />
+      </Container>
+    </div>
   );
 }
 export default MyCardsPage;

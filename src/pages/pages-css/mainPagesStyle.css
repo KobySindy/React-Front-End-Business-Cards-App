@@ -1,0 +1,23 @@
+.page-wrap {
+  margin-top: 65px;
+  display: flex;
+  flex-direction: column;
+  /* color: white; */
+}
+
+.cards-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin: 0 auto;
+}
+.homeBgImage {
+  min-height: 100vh;
+  margin-top: -10px;
+  background-image: url("../../images/home-pageBG.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+
+  /* transform: translateX(-50%); */
+}

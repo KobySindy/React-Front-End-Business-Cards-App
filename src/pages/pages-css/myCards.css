@@ -1,9 +1,0 @@
-.myCardsflexBox {
-  margin-top: 70px;
-  display: flex;
-  flex-direction: column;
-}
-
-.createCardBtn {
-  width: 200px;
-}

@@ -8,7 +8,10 @@ import {
   forFirstCharUppercase,
 } from "../helpers/FetchHelper";
 import { updateFavoriteCards } from "../helpers/stateHelper";
+
+//CSS imports
 import "./pages-css/businessCardsPage.css";
+import "./pages-css/mainPagesStyle.css";
 
 function BusinessCardsPage({ state, setState }) {
   const [allCards, setAllCards] = useState([]);
@@ -36,7 +39,7 @@ function BusinessCardsPage({ state, setState }) {
 
     return filterdArr;
   }
-  let filterdArr = getFilterd(filter, allCards);
+  let cardsToRender = getFilterd(filter, allCards);
 
   //Add To Favorites
   const addToFavorites = (cardBizNumber, state) => {
@@ -53,14 +56,17 @@ function BusinessCardsPage({ state, setState }) {
 
   return (
     <>
-      <SearchBar setFilter={setFilter} />
-      <Container className='cardsContainer'>
-        <BusinessCards
-          state={state}
-          cards={filterdArr}
-          addToFavorites={addToFavorites}
-        />
-      </Container>
+      <div className='bgImage'>
+        <Container className='page-wrap'>
+          <SearchBar setFilter={setFilter} />
+
+          <BusinessCards
+            state={state}
+            cards={cardsToRender}
+            addToFavorites={addToFavorites}
+          />
+        </Container>
+      </div>
     </>
   );
 }
@@ -76,6 +82,7 @@ function SearchBar({ setFilter }) {
         <Form.Control
           as='input'
           onChange={(e) => handleChange(e.target.value)}
+          placeholder='Search By Name/Description'
         />
       </Form.Group>
     </Form>

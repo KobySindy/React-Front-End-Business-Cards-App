@@ -9,7 +9,7 @@ function SignInPage({ setState }) {
   const history = useHistory();
 
   return (
-    <Container>
+    <Container className='page-wrap'>
       <SignInComp clickHandler={signIn} />
     </Container>
   );

@@ -4,11 +4,11 @@
   background-color: #32373d;
   color: white;
 }
-
-.cardsContainer {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
+.bgImage {
+  margin-top: -10px;
+  /* min-height: 100vh; */
+  background-color: rgb(223, 223, 223);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
