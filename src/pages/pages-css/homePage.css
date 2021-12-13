@@ -2,3 +2,11 @@
   margin-top: 10%;
   color: white;
 }
+.homeBgImage {
+  min-height: 100vh;
+  margin-top: -10px;
+  background-image: url("../../images/home-pageBG.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+}

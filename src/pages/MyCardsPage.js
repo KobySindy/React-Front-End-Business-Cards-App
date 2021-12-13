@@ -36,7 +36,7 @@ function MyCardsPage({ state, setState }) {
   };
 
   return (
-    <div className='bgImage'>
+    <div className='background-wrap'>
       <Container className='page-wrap'>
         <Button className='createCardBtn btn-success' onClick={addCard}>
           Create New Card

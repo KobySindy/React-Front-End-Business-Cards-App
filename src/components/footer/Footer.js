@@ -18,7 +18,8 @@ const Footer = () => {
         </div>
         <div className='footer-right-box'>
           <div className='links-container'>
-            <h5>Links</h5>y<a href='#!'>Link 1</a>
+            <h5>Links</h5>
+            <a href='#!'>Link 1</a>
             <a href='#!'>Link 2</a>
             <a href='#!'>Link 3</a>
             <a href='#!'>Link 4</a>

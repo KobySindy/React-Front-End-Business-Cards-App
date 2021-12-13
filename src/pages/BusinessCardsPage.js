@@ -22,7 +22,7 @@ function BusinessCardsPage({ state, setState }) {
       setAllCards(cardsData);
       console.log(state.user);
     });
-  }, []);
+  }, [state.user]);
 
   //Setting Cards to Render for BusinessCards
   function getFilterd(filter, allTheCards) {
@@ -56,8 +56,9 @@ function BusinessCardsPage({ state, setState }) {
 
   return (
     <>
-      <div className='bgImage'>
+      <div className='background-wrap'>
         <Container className='page-wrap'>
+          <h1 className='page-title'>Business Cards Page</h1>
           <SearchBar setFilter={setFilter} />
 
           <BusinessCards

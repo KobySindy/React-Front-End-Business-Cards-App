@@ -1,5 +1,6 @@
 import { Card, Button } from "react-bootstrap";
 import { AiOutlineEdit, AiOutlineDelete } from "react-icons/ai";
+import { withRouter } from "react-router";
 
 function CardComp({
   state,
@@ -13,13 +14,7 @@ function CardComp({
 
   return (
     <>
-      <Card
-        style={{
-          width: "18rem",
-          display: "inline-block",
-          padding: 20,
-          margin: 10,
-        }}>
+      <Card>
         <Card.Img variant='top' style={{ width: 60 }} src={bizImage} />
         <Card.Title>{bizName}</Card.Title>
         <Card.Text>{bizDescription}</Card.Text>
@@ -46,8 +41,16 @@ function ButtonsControl({
   editCard,
   card,
 }) {
-  const editButtonStyle = { display: editCard ? "inherit" : "none" };
-  const deleteButtonStyle = { display: removeCard ? "inherit" : "none" };
+  const editButtonStyle = {
+    border: "none",
+    backgroundColor: "transparent",
+    display: editCard ? "inherit" : "none",
+  };
+  const deleteButtonStyle = {
+    border: "1px solid white",
+    backgroundColor: "red",
+    display: removeCard ? "inherit" : "none",
+  };
   const addToFavoritesButtonStyle = {
     display: addToFavorites ? "inherit" : "none",
   };
@@ -55,7 +58,6 @@ function ButtonsControl({
     <>
       <Button
         type='button'
-        variant='primary'
         style={editButtonStyle}
         onClick={() => {
           editCard(card._id);
@@ -64,7 +66,6 @@ function ButtonsControl({
       </Button>
       <Button
         type='button'
-        variant='danger'
         style={deleteButtonStyle}
         onClick={() => {
           isFavorites ? removeCard(card.bizNumber) : removeCard(card._id);

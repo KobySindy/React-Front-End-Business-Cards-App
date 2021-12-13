@@ -5,13 +5,17 @@ import { signInUser, getMeData } from "../helpers/FetchHelper";
 import SignInComp from "../components/sign-in/SignInComp";
 import { updateUser } from "../helpers/stateHelper";
 
+import "./pages-css/mainPagesStyle.css";
+
 function SignInPage({ setState }) {
   const history = useHistory();
 
   return (
-    <Container className='page-wrap'>
-      <SignInComp clickHandler={signIn} />
-    </Container>
+    <div className='background-wrap'>
+      <Container className='page-wrap'>
+        <SignInComp clickHandler={signIn} />
+      </Container>
+    </div>
   );
 
   function signIn(data) {

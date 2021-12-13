@@ -3,15 +3,19 @@ import SimpleRegistrationComp from "../components/simple-registration/SimpleRegi
 import { registerNewAccount } from "../helpers/FetchHelper";
 import { toast } from "react-toastify";
 
+import "./pages-css/mainPagesStyle.css";
+
 function SimpleRegistrationPage() {
   return (
-    <Container className='page-wrap'>
-      <SimpleRegistrationComp
-        clickHandler={registerUser}
-        text='Sign up'
-        typeOfUser='Regular'
-      />
-    </Container>
+    <div className='background-wrap'>
+      <Container className='page-wrap'>
+        <SimpleRegistrationComp
+          clickHandler={registerUser}
+          text='Sign up'
+          typeOfUser='Regular'
+        />
+      </Container>
+    </div>
   );
 
   function registerUser(data) {

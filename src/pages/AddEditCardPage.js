@@ -5,6 +5,7 @@ import validateCard from "../helpers/createCardHelper";
 import { updateCards } from "../helpers/stateHelper";
 import { insertNewCard, updateThisCard } from "../helpers/FetchHelper";
 import "./pages-css/mainPagesStyle.css";
+// import "./pages-css/addEditCardPage.css";
 
 const EDIT_MODES = {
   ADD: 1,
@@ -43,73 +44,75 @@ function AddEditCardPage({ setState, state }) {
   }
 
   return (
-    <Container className='page-wrap'>
-      <Form>
-        <h2>{title}</h2>
-        <Form.Group className='mb-3' controlId='formBasicBusinessName'>
-          <Form.Label>Business Name</Form.Label>
-          <Form.Control
-            type='text'
-            defaultValue={updatedCard.bizName}
-            placeholder='Bussiness Name'
-            onChange={(e) => handleInputChange("bizName", e.target.value)}
-          />
-        </Form.Group>
+    <div className='background-wrap'>
+      <Container className='page-wrap'>
+        <Form className='card-form'>
+          <h2>{title}</h2>
+          <Form.Group className='mb-3' controlId='formBasicBusinessName'>
+            <Form.Label>Business Name</Form.Label>
+            <Form.Control
+              type='text'
+              defaultValue={updatedCard.bizName}
+              placeholder='Bussiness Name'
+              onChange={(e) => handleInputChange("bizName", e.target.value)}
+            />
+          </Form.Group>
 
-        <Form.Group className='mb-3' controlId='formBasicBusinessDescription'>
-          <Form.Label>Business Description</Form.Label>
-          <Form.Control
-            type='text'
-            defaultValue={updatedCard.bizDescription}
-            placeholder='Bussiness Description'
-            onChange={(e) =>
-              handleInputChange("bizDescription", e.target.value)
-            }
-          />
-        </Form.Group>
-        <Form.Group className='mb-3' controlId='formBasicBusinessAddress'>
-          <Form.Label>Business Address</Form.Label>
-          <Form.Control
-            type='text'
-            defaultValue={updatedCard.bizAddress}
-            placeholder='Bussiness Address'
-            onChange={(e) => handleInputChange("bizAddress", e.target.value)}
-          />
-        </Form.Group>
-        <Form.Group className='mb-3' controlId='formBasicBusinessPhone'>
-          <Form.Label>Business Phone</Form.Label>
-          <Form.Control
-            type='text'
-            defaultValue={updatedCard.bizPhone}
-            placeholder='Bussiness Phone'
-            onChange={(e) => handleInputChange("bizPhone", e.target.value)}
-          />
-        </Form.Group>
-        <Form.Group className='mb-3' controlId='formBasicBusinessImage'>
-          <Form.Label>Business Image</Form.Label>
-          <Form.Control type='text' />
-        </Form.Group>
-
-        <Button
-          variant='primary'
-          type='submit'
-          onClick={(e) => {
-            e.preventDefault();
-            const errorOrData = validateCard(updatedCard);
-            if (typeof errorOrData == "string") {
-              toast(errorOrData);
-            } else {
-              if (mode === EDIT_MODES.UPDATE) {
-                updateCard();
-              } else if (mode === EDIT_MODES.ADD) {
-                insertCard();
+          <Form.Group className='mb-3' controlId='formBasicBusinessDescription'>
+            <Form.Label>Business Description</Form.Label>
+            <Form.Control
+              type='text'
+              defaultValue={updatedCard.bizDescription}
+              placeholder='Bussiness Description'
+              onChange={(e) =>
+                handleInputChange("bizDescription", e.target.value)
               }
-            }
-          }}>
-          {btnText}
-        </Button>
-      </Form>
-    </Container>
+            />
+          </Form.Group>
+          <Form.Group className='mb-3' controlId='formBasicBusinessAddress'>
+            <Form.Label>Business Address</Form.Label>
+            <Form.Control
+              type='text'
+              defaultValue={updatedCard.bizAddress}
+              placeholder='Bussiness Address'
+              onChange={(e) => handleInputChange("bizAddress", e.target.value)}
+            />
+          </Form.Group>
+          <Form.Group className='mb-3' controlId='formBasicBusinessPhone'>
+            <Form.Label>Business Phone</Form.Label>
+            <Form.Control
+              type='text'
+              defaultValue={updatedCard.bizPhone}
+              placeholder='Bussiness Phone'
+              onChange={(e) => handleInputChange("bizPhone", e.target.value)}
+            />
+          </Form.Group>
+          <Form.Group className='mb-3' controlId='formBasicBusinessImage'>
+            <Form.Label>Business Image</Form.Label>
+            <Form.Control type='text' />
+          </Form.Group>
+
+          <Button
+            variant='primary'
+            type='submit'
+            onClick={(e) => {
+              e.preventDefault();
+              const errorOrData = validateCard(updatedCard);
+              if (typeof errorOrData == "string") {
+                toast(errorOrData);
+              } else {
+                if (mode === EDIT_MODES.UPDATE) {
+                  updateCard();
+                } else if (mode === EDIT_MODES.ADD) {
+                  insertCard();
+                }
+              }
+            }}>
+            {btnText}
+          </Button>
+        </Form>
+      </Container>
+    </div>
   );
 
   function insertCard() {

@@ -14,7 +14,8 @@ function HomePage({ state, setState }) {
     <div className='homeBgImage'>
       <Container className='page-wrap'>
         <div className='home-page-content'>
-          <LogedOutUser />
+          {display == DISPLAY_MODES.LOGED_IN && <LogedInUser user={user} />}
+          {display == DISPLAY_MODES.LOGED_OUT && <LogedOutUser />}
         </div>
       </Container>
     </div>
@@ -43,5 +44,13 @@ function LogedOutUser() {
   );
 }
 
-function LogedInUser() {}
+function LogedInUser({ user }) {
+  console.log(user);
+  return (
+    <>
+      <h1>Wellcome Back {user.name}</h1>
+      <p>Go To Business Cards Page And Check Out The BIG BORD!!</p>
+    </>
+  );
+}
 export default HomePage;

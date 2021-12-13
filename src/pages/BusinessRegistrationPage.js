@@ -10,21 +10,25 @@ import {
   registerNewAccount,
 } from "../helpers/FetchHelper";
 
+import "./pages-css/mainPagesStyle.css";
+
 function BusinessRegistrationPage({ state, setState }) {
   const [isStep1, setIsStep1] = useState(true);
 
   return (
-    <Container className='page-wrap'>
-      {isStep1 && (
-        <SimpleRegistrationComp
-          clickHandler={registerUser}
-          text='Next'
-          typeOfUser='Business'
-        />
-      )}
+    <div className='background-wrap'>
+      <Container className='page-wrap'>
+        {isStep1 && (
+          <SimpleRegistrationComp
+            clickHandler={registerUser}
+            text='Next'
+            typeOfUser='Business'
+          />
+        )}
 
-      {!isStep1 && <AddEditCardPage state={state} setState={setState} />}
-    </Container>
+        {!isStep1 && <AddEditCardPage state={state} setState={setState} />}
+      </Container>
+    </div>
   );
 
   function registerUser(data) {

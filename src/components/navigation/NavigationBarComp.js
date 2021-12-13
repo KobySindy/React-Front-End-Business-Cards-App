@@ -1,4 +1,4 @@
-import { Navbar, Nav, Container, Button, Form } from "react-bootstrap";
+import { Navbar, Nav, Container, Button } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 import { routes, DISPLAY_STATES } from "../../helpers/routes";
 import {
@@ -10,10 +10,16 @@ function NavigationBarComp({ setState, state }) {
   const history = useHistory();
   return (
     <Navbar
-      style={{ width: "100%", zIndex: 100, position: "fixed", top: 0, left: 0 }}
+      style={{
+        backgroundColor: "#273b46",
+        width: "100%",
+        zIndex: 100,
+        position: "fixed",
+        top: 0,
+        left: 0,
+      }}
       collapseOnSelect
       expand='lg'
-      bg='dark'
       variant='dark'>
       <Container>
         <Navbar.Toggle aria-controls='responsive-navbar-nav' />

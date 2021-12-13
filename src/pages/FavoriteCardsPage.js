@@ -26,18 +26,23 @@ function FavoriteCardsPage({ state, setState }) {
   console.log(userFavoriteCards);
 
   return (
-    <Container className='page-wrap'>
-      {favoriteCardsBizNumbers.length === 0 ? (
-        <></>
-      ) : (
-        <FavoriteCards
-          className='cards-wrap'
-          cards={userFavoriteCards}
-          state={state}
-          removeCard={removeFavoriteCard}
-        />
-      )}
-    </Container>
+    <div className='background-wrap'>
+      <Container className='page-wrap'>
+        {favoriteCardsBizNumbers.length === 0 ? (
+          <></>
+        ) : (
+          <>
+            <h1 className='page-title'>Favorite Cards Page</h1>
+            <FavoriteCards
+              className='cards-wrap'
+              cards={userFavoriteCards}
+              state={state}
+              removeCard={removeFavoriteCard}
+            />
+          </>
+        )}
+      </Container>
+    </div>
   );
 }
 export default FavoriteCardsPage;
