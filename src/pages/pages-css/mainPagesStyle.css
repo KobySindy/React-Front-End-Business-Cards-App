@@ -44,6 +44,17 @@
   color: white;
 }
 
+/* .card-image-box {
+  
+  display: flex;
+} */
+
+.card-image {
+  height: 60px;
+  width: 60px;
+  border-radius: 50% !important;
+}
+
 page-title {
   color: #273b46;
 }

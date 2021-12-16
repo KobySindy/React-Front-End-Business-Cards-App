@@ -1,6 +1,9 @@
 import { Card, Button } from "react-bootstrap";
-import { AiOutlineEdit, AiOutlineDelete } from "react-icons/ai";
-import { withRouter } from "react-router";
+import {
+  AiOutlineEdit,
+  AiOutlineDelete,
+  AiOutlineAppstoreAdd,
+} from "react-icons/ai";
 
 function CardComp({
   state,
@@ -15,7 +18,9 @@ function CardComp({
   return (
     <>
       <Card>
-        <Card.Img variant='top' style={{ width: 60 }} src={bizImage} />
+        <div className='card-image-box'>
+          <Card.Img variant='top' className='card-image' src={bizImage} />
+        </div>
         <Card.Title>{bizName}</Card.Title>
         <Card.Text>{bizDescription}</Card.Text>
         <Card.Text>{bizAddress}</Card.Text>
@@ -78,6 +83,7 @@ function ButtonsControl({
           addToFavorites(card.bizNumber, state);
         }}>
         Add To Favorite
+        <AiOutlineAppstoreAdd />
       </Button>
     </>
   );

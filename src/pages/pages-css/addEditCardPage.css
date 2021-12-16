@@ -1,3 +1,30 @@
+.example-box {
+  display: flex;
+  width: 80%;
+  flex-direction: column;
+  grid-area: 2/2/4/3;
+}
+
+.example-box h1 {
+  color: #304855;
+  text-align: center;
+}
+
 .card-form {
-  background-color: #304855;
+  grid-area: 1/1/5/2;
+  height: 80%;
+}
+
+.create-cards-page-wrap {
+  min-height: 100vh;
+  margin-top: 65px;
+  display: grid;
+  grid-template-columns: 2fr 2fr;
+  grid-template-rows: repeat(4, auto);
+  grid-auto-rows: 25%;
+  align-items: center;
+}
+
+.create-card-example {
+  max-width: 100%;
 }

@@ -1,8 +1,8 @@
 .searchBarBox {
   padding: 1.5rem;
   box-shadow: 0 0.4rem 1.4rem rgb(0 0 0 / 30%);
-  background-color: #304855;
+  /* background-color: #304855; */
   border: 1px solid rgba(255, 255, 255, 0.233) !important;
 
-  color: white;
+  /* color: white; */
 }

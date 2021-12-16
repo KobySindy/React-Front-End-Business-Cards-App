@@ -106,7 +106,6 @@ export function updateThisCard(card, callback) {
 export function addCardToFavorites(cardBizNumber, callback) {
   if (!token) return;
   let url = baseUrl + "/api/users/favorite-cards/";
-
   let obj = getConfigForPutRequest({ cardBizNumber }, token);
   fetch(url, obj)
     .then((response) => response.json())
@@ -137,6 +136,9 @@ function normalizeCardToServer(card) {
     bizAddress: forFirstCharUppercase(card.bizAddress),
     bizDescription: forFirstCharUppercase(card.bizDescription),
     bizPhone: card.bizPhone,
+    bizImage: card.bizImage
+      ? card.bizImage
+      : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
   };
 }
 

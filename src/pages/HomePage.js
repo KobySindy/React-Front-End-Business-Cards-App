@@ -14,8 +14,8 @@ function HomePage({ state, setState }) {
     <div className='homeBgImage'>
       <Container className='page-wrap'>
         <div className='home-page-content'>
-          {display == DISPLAY_MODES.LOGED_IN && <LogedInUser user={user} />}
-          {display == DISPLAY_MODES.LOGED_OUT && <LogedOutUser />}
+          {display === DISPLAY_MODES.LOGED_IN && <LogedInUser user={user} />}
+          {display === DISPLAY_MODES.LOGED_OUT && <LogedOutUser />}
         </div>
       </Container>
     </div>

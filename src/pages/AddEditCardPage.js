@@ -5,7 +5,8 @@ import validateCard from "../helpers/createCardHelper";
 import { updateCards } from "../helpers/stateHelper";
 import { insertNewCard, updateThisCard } from "../helpers/FetchHelper";
 import "./pages-css/mainPagesStyle.css";
-// import "./pages-css/addEditCardPage.css";
+import "./pages-css/addEditCardPage.css";
+import CreatCardExample from "../images/create-card-example2.png";
 
 const EDIT_MODES = {
   ADD: 1,
@@ -31,6 +32,7 @@ function AddEditCardPage({ setState, state }) {
     bizDescription: "",
     bizAddress: "",
     bizPhone: "",
+    bizImage: "",
   };
 
   if (mode === EDIT_MODES.UPDATE) {
@@ -43,14 +45,27 @@ function AddEditCardPage({ setState, state }) {
     updatedCard[field] = value;
   }
 
+  function InputColorChange(inputName) {
+    let inputField = document.getElementById(inputName);
+    inputField.style.backgroundColor = "#cccccc";
+  }
+  function InputColorReset(inputName) {
+    let inputField = document.getElementById(inputName);
+    inputField.style.backgroundColor = "#000";
+  }
+
   return (
     <div className='background-wrap'>
-      <Container className='page-wrap'>
+      <div
+        className={
+          mode === EDIT_MODES.UPDATE ? "page-wrap" : "create-cards-page-wrap"
+        }>
         <Form className='card-form'>
           <h2>{title}</h2>
           <Form.Group className='mb-3' controlId='formBasicBusinessName'>
             <Form.Label>Business Name</Form.Label>
             <Form.Control
+              autoFocus
               type='text'
               defaultValue={updatedCard.bizName}
               placeholder='Bussiness Name'
@@ -89,7 +104,12 @@ function AddEditCardPage({ setState, state }) {
           </Form.Group>
           <Form.Group className='mb-3' controlId='formBasicBusinessImage'>
             <Form.Label>Business Image</Form.Label>
-            <Form.Control type='text' />
+            <Form.Control
+              type='text'
+              defaultValue={updatedCard.bizImage}
+              placeholder='Bussiness Image'
+              onChange={(e) => handleInputChange("bizImage", e.target.value)}
+            />
           </Form.Group>
 
           <Button
@@ -111,12 +131,24 @@ function AddEditCardPage({ setState, state }) {
             {btnText}
           </Button>
         </Form>
-      </Container>
+        {mode === EDIT_MODES.ADD && (
+          <div className='example-box'>
+            <h1>Example</h1>
+            <img
+              className='create-card-example'
+              src={CreatCardExample}
+              alt=''
+            />
+          </div>
+        )}
+      </div>
     </div>
   );
 
   function insertCard() {
+    debugger;
     insertNewCard(updatedCard, (newCard) => {
+      debugger;
       const newCardsArr = [...user.cards, newCard];
       updateCards(setState, newCardsArr);
     });

@@ -41,6 +41,7 @@ function SignOut({ state, setState, history }) {
       <>
         <span style={{ color: "white", margin: "0.5rem" }}>{userName}</span>
         <Button
+          style={{ backgroundColor: "#67aace", color: "#000" }}
           onClick={() => {
             clearAccessToken();
             setState({ user: {}, cardIdToEdit: "" });
