@@ -1,4 +1,5 @@
 import { Container } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "./pages-css/homePage.css";
 
 function HomePage({ state, setState }) {
@@ -31,14 +32,19 @@ function LogedOutUser() {
       <br />
       <h4> So lets jump right in...</h4>
       <p>
-        Looking for a Freelance for hire? go to
-        <a href='simple-registration'>Simple Registration</a> <br /> Sign up and
-        start searching your freelance.
+        Looking for a Freelance for hire? go to{" "}
+        <Link to='/simple-registration' as={Link}>
+          Simple Registration
+        </Link>
+        {/* <a href='simple-registration'>Simple Registration</a> */}
+        <br /> Sign up and start searching your freelance.
       </p>
       <p>
         if you are a Freelance go to
-        <a href='business-registration'>Business Registration</a>, Sign up and
-        publish your First business card.
+        <Link to='/business-registration' as={Link}>
+          Business Registration
+        </Link>
+        , Sign up and publish your First business card.
       </p>
     </>
   );
