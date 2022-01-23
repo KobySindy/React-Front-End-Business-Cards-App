@@ -24,7 +24,7 @@ function App() {
       <div className='content-wrap'>
         <SinglePageAppComp setState={setState} state={state} />
       </div>
-      <Footer />
+      {/* <Footer state={state} /> */}
       <ToastContainer />
     </div>
   );

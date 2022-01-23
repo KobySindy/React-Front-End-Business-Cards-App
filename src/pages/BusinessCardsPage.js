@@ -20,7 +20,6 @@ function BusinessCardsPage({ state, setState }) {
   useEffect(() => {
     getAllCards((cardsData) => {
       setAllCards(cardsData);
-      console.log(state.user);
     });
   }, [state.user]);
 
@@ -44,7 +43,6 @@ function BusinessCardsPage({ state, setState }) {
   //Add To Favorites
   const addToFavorites = (cardBizNumber, state) => {
     addCardToFavorites(cardBizNumber, (res) => {
-      debugger;
       if (res.message) {
         toast(res.message);
       } else {

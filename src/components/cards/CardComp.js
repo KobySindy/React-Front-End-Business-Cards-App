@@ -78,6 +78,7 @@ function ButtonsControl({
         <AiOutlineDelete />
       </Button>
       <Button
+        variant='danger'
         style={addToFavoritesButtonStyle}
         onClick={() => {
           addToFavorites(card.bizNumber, state);

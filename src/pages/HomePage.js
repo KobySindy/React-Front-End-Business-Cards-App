@@ -51,11 +51,15 @@ function LogedOutUser() {
 }
 
 function LogedInUser({ user }) {
-  console.log(user);
   return (
     <>
       <h1>Wellcome Back {user.name}</h1>
-      <p>Go To Business Cards Page And Check Out The BIG BORD!!</p>
+      <p>
+        Go To Business Cards Page And Check Out The
+        <Link to='/business-cards' as={Link}>
+          BIG BORD!!
+        </Link>{" "}
+      </p>
     </>
   );
 }

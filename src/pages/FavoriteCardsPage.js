@@ -22,9 +22,6 @@ function FavoriteCardsPage({ state, setState }) {
     });
   };
 
-  console.log(favoriteCardsBizNumbers);
-  console.log(userFavoriteCards);
-
   return (
     <div className='background-wrap'>
       <Container className='page-wrap'>

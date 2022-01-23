@@ -146,9 +146,7 @@ function AddEditCardPage({ setState, state }) {
   );
 
   function insertCard() {
-    debugger;
     insertNewCard(updatedCard, (newCard) => {
-      debugger;
       const newCardsArr = [...user.cards, newCard];
       updateCards(setState, newCardsArr);
     });

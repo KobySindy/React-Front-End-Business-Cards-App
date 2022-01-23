@@ -1,6 +1,6 @@
 import { Navbar, Nav, Container, Button } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
-import { routes, DISPLAY_STATES } from "../../helpers/routes";
+import { routes, DISPLAY_STATES, routesFilter } from "../../helpers/routes";
 import {
   getAccessToken,
   clearAccessToken,
@@ -25,7 +25,11 @@ function NavigationBarComp({ setState, state }) {
         <Navbar.Toggle aria-controls='responsive-navbar-nav' />
         <Navbar.Collapse id='responsive-navbar-nav'>
           <Nav className='me-auto'>
-            <NavItems state={state} />
+            <NavItems
+              routes={routes}
+              DISPLAY_STATES={DISPLAY_STATES}
+              state={state}
+            />
           </Nav>
           <SignOut state={state} history={history} setState={setState} />
         </Navbar.Collapse>
@@ -33,6 +37,7 @@ function NavigationBarComp({ setState, state }) {
     </Navbar>
   );
 }
+
 function SignOut({ state, setState, history }) {
   let userName = state.user.name;
   const token = getAccessToken();
@@ -55,32 +60,18 @@ function SignOut({ state, setState, history }) {
   return null;
 }
 
-function NavItems({ state }) {
-  const isLoggedIn = Boolean(state.user._id);
-  const isbiz = state.user.biz;
+function NavItems({ state, routes, DISPLAY_STATES }) {
+  const { user } = state;
 
-  return routes
-    .map((route, index) => {
-      if (route.state === DISPLAY_STATES.HIDDEN && !isLoggedIn) {
-        return null;
-      }
-      if (route.state === DISPLAY_STATES.PRIVATE && !isLoggedIn) {
-        return null;
-      }
-      if (route.state === DISPLAY_STATES.LOGGED_OUT && isLoggedIn) {
-        return false;
-      }
+  let routesToShow = routesFilter(user, routes, DISPLAY_STATES);
 
-      if (route.state === DISPLAY_STATES.IS_BIZ && !isbiz) {
-        return null;
-      }
-      return (
-        <Nav.Link key={index} to={route.href} as={Link}>
-          {route.icon} {route.name}
-        </Nav.Link>
-      );
-    })
-    .filter(Boolean);
+  return routesToShow.map((route, index) => {
+    return (
+      <Nav.Link key={index} to={route.to} as={route.as}>
+        {route.icon} {route.name}
+      </Nav.Link>
+    );
+  });
 }
 
 export default NavigationBarComp;

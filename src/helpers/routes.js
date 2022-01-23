@@ -1,9 +1,9 @@
+import { Link } from "react-router-dom";
 import { BiHome } from "react-icons/bi";
 import { FaUserPlus, FaUserTie, FaSignInAlt } from "react-icons/fa";
-import { FcAbout } from "react-icons/fc";
+
 import { TiBusinessCard, TiStarFullOutline } from "react-icons/ti";
 import HomePage from "../pages/HomePage";
-import AboutPage from "../pages/AboutPage";
 import SignInPage from "../pages/SignInPage";
 import AddEditCardPage from "../pages/AddEditCardPage";
 import BusinessRegistrationPage from "../pages/BusinessRegistrationPage";
@@ -28,13 +28,13 @@ export const routes = [
     state: DISPLAY_STATES.GENERAL,
     icon: <BiHome> </BiHome>,
   },
-  {
-    name: "About",
-    href: "/about",
-    page: AboutPage,
-    state: DISPLAY_STATES.GENERAL,
-    icon: <FcAbout></FcAbout>,
-  },
+  // {
+  //   name: "About",
+  //   href: "/about",
+  //   page: AboutPage,
+  //   state: DISPLAY_STATES.GENERAL,
+  //   icon: <FcAbout></FcAbout>,
+  // },
   {
     name: "Simple Registration",
     href: "/simple-registration",
@@ -83,3 +83,38 @@ export const routes = [
     state: DISPLAY_STATES.HIDDEN,
   },
 ];
+
+export function routesFilter(user, routes, DISPLAY_STATES) {
+  const isLoggedIn = Boolean(user._id);
+  const isbiz = user.biz;
+
+  const filterdRoutes = routes
+    .map((route, index) => {
+      if (route.state === DISPLAY_STATES.HIDDEN && !isLoggedIn) {
+        return null;
+      }
+      if (route.state === DISPLAY_STATES.PRIVATE && !isLoggedIn) {
+        return null;
+      }
+      if (route.state === DISPLAY_STATES.LOGGED_OUT && isLoggedIn) {
+        return false;
+      }
+
+      if (route.state === DISPLAY_STATES.IS_BIZ && !isbiz) {
+        return null;
+      }
+      return {
+        key: index,
+        to: route.href,
+        as: Link,
+        icon: route.icon,
+        name: route.name,
+      };
+      // <Link key={index} to={route.href} as={Link}>
+      //   {route.icon} {route.name}
+      // </Link>
+    })
+    .filter(Boolean);
+
+  return filterdRoutes;
+}

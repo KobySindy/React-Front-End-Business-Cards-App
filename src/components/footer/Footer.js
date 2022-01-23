@@ -1,45 +1,64 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
+import { BsGithub, BsLinkedin, BsInstagram, BsTwitter } from "react-icons/bs";
+import { routes, DISPLAY_STATES, routesFilter } from "../../helpers/routes";
 import "./footer.css";
 
-const Footer = () => {
+const Footer = ({ state }) => {
+  const { user } = state;
+
+  let routesForSiteMap = routesFilter(user, routes, DISPLAY_STATES);
+
   return (
     <footer className='footer'>
-      {/* <div className='footer-top'>
-        <p>Here you can organize your footer content.</p>
-      </div> */}
-      <div className='footer-midlle'>
-        <div className='footer-left-box'>
-          <h3>Some content</h3>
-          <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam,
-            reiciendis. Numquam consequatur quisquam, officiis voluptatum
-            officiis dolorum.
-          </p>
+      <div className='footer-container'>
+        <div className='info'>
+          <h4>BFB-Big Freelance Bord</h4>
+          <li> 972-2-6247149</li>
+          <li>Jerusalem</li>
+          <li>18 Haoman</li>
         </div>
-        <div className='footer-right-box'>
-          <div className='links-container'>
-            <h5>Links</h5>
-            <a href='#!'>Link 1</a>
-            <a href='#!'>Link 2</a>
-            <a href='#!'>Link 3</a>
-            <a href='#!'>Link 4</a>
-          </div>
-          <div className='links-container'>
-            <h5>Links</h5>
+        <div className='links-container'>
+          <h4>Site Map</h4>
 
-            <a href='#!'>Link 1</a>
+          {routesForSiteMap.map((route, index) => {
+            return (
+              <Link key={index} to={route.to} as={route.as}>
+                {route.name}
+              </Link>
+            );
+          })}
+        </div>
+        <div className='links-container'>
+          <h5>Social Media</h5>
 
-            <a href='#!'>Link 2</a>
+          <a href='https://github.com/' target='_blank'>
+            {" "}
+            <BsGithub />
+          </a>
 
-            <a href='#!'>Link 3</a>
+          <a href='https://linkedin.com/'>
+            <BsLinkedin />
+          </a>
 
-            <a href='#!'>Link 4</a>
-          </div>
+          <a href='https://instagram.com/'>
+            <BsInstagram />
+          </a>
+
+          <a href='https://twitter.com/'>
+            <BsTwitter />
+          </a>
         </div>
       </div>
+
       <div className='footer-bottom'>
         © 2021 Copyright:
-        <a href='#'> Koby Sindy</a>
+        <a
+          href='https://github.com/KobySindy/React-Front-End-Business-Cards-App.git'
+          target='_blank'>
+          Koby Sindy
+        </a>
       </div>
     </footer>
   );

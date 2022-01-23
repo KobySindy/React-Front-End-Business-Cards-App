@@ -1,5 +1,6 @@
 .page-wrap {
-  margin: 65px auto;
+  margin: 0 auto;
+  margin-top: 65px;
   display: flex;
   flex-direction: column;
   /* color: white; */
