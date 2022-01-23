@@ -15,7 +15,7 @@ function SignInComp({ clickHandler }) {
         <Form.Control type='password' />
       </Form.Group>
       <Button
-        variant='secondary'
+        variant='primary'
         type='submit'
         onClick={(e) => {
           e.preventDefault();

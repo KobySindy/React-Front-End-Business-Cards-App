@@ -26,7 +26,9 @@ function FavoriteCardsPage({ state, setState }) {
     <div className='background-wrap'>
       <Container className='page-wrap'>
         {favoriteCardsBizNumbers.length === 0 ? (
-          <></>
+          <>
+            <h1 className='page-title'>You don't have favorite cards</h1>
+          </>
         ) : (
           <>
             <h1 className='page-title'>Favorite Cards Page</h1>

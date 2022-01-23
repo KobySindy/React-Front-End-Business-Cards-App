@@ -45,15 +45,6 @@ function AddEditCardPage({ setState, state }) {
     updatedCard[field] = value;
   }
 
-  function InputColorChange(inputName) {
-    let inputField = document.getElementById(inputName);
-    inputField.style.backgroundColor = "#cccccc";
-  }
-  function InputColorReset(inputName) {
-    let inputField = document.getElementById(inputName);
-    inputField.style.backgroundColor = "#000";
-  }
-
   return (
     <div className='background-wrap'>
       <div
@@ -61,7 +52,7 @@ function AddEditCardPage({ setState, state }) {
           mode === EDIT_MODES.UPDATE ? "page-wrap" : "create-cards-page-wrap"
         }>
         <Form className='card-form'>
-          <h2>{title}</h2>
+          <h2 className='page-title'>{title}</h2>
           <Form.Group className='mb-3' controlId='formBasicBusinessName'>
             <Form.Label>Business Name</Form.Label>
             <Form.Control
